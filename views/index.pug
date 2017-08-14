@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 Admin
+  h2 Create Folder
+  form(method="post" action="/newFolder")
+    fieldset
+      div
+        label(for="newFolder") New Folder:
+        input#newFolder(name="newFolder")
+      div
+        button   OK  
+  if folders && folders.length
+    h2 Upload files
+    form(method="post" action="/new" enctype="multipart/form-data")
+      fieldset
+        div
+          label(for="folder") Folder: 
+          select#folder(name="folder")
+            for folder in folders
+              option=folder
+        div
+          label(for="files") File(s): 
+          input#files(name="files" type="file" multiple)
+        div
+          button   OK  
+    h2 List files
+    form(action="/list")
+      fieldset
+        div
+          label(for="folder") Folder: 
+          select#listFiles(name="listFiles")
+            for folder in folders
+              option=folder
+        div
+          button   OK  

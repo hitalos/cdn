@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Listing Files in "#{ folder }"
+  if folder && files
+    ul
+      for file in files
+        li: a(href=folder + '/' + file)=file
